@@ -35,5 +35,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-#Standard Assets
+#Assets / Packages
 PostProcessing/
+Easy Input for Gear VR/
+Oculus/

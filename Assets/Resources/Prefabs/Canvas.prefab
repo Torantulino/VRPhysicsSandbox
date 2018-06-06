@@ -1393,9 +1393,9 @@ MonoBehaviour:
   inptMassVal: {fileID: 114590680496094024}
   inptRadiusVal: {fileID: 114956544354531348}
   inptDensityVal: {fileID: 114798120574646994}
-  editingMass: 0
-  editingRadius: 0
-  editingDensity: 0
+  contentPanel: {fileID: 0}
+  viewPort: {fileID: 0}
+  PhysicsEngine: {fileID: 0}
 --- !u!114 &114403888806471112
 MonoBehaviour:
   m_ObjectHideFlags: 1
