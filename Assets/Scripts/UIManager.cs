@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     private GameObject pauseButton;
     private GameObject playButton;
     private InputField inptTime;
+    private GameObject[] EyeCameras;
 
     public void SetSelectedObject(PhysicsObject obj)
     {
@@ -52,6 +53,8 @@ public class UIManager : MonoBehaviour
 	    activePanel = starPanel;
 
 	    inptTime.text = Time.timeScale.ToString();
+
+	    EyeCameras = GameObject.FindGameObjectsWithTag("MainCamera");
 
         Object[] CelestialObj = Resources.LoadAll("Prefabs/Objects");
 	    foreach (Object obj in CelestialObj)
@@ -152,10 +155,22 @@ public class UIManager : MonoBehaviour
 
     public void trailsToggled(bool state)
     {
-        if(state)
-            Camera.main.cullingMask = Camera.main.cullingMask | (1 << 8);
+        if (state)
+        {
+            foreach (GameObject eyeCamera in EyeCameras)
+            {
+                Camera eyeCam = eyeCamera.GetComponent<Camera>();
+                eyeCam.cullingMask = eyeCam.cullingMask | (1 << 8);
+            }
+        }
         else
-            Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << 8);
+        {
+            foreach (GameObject eyeCamera in EyeCameras)
+            {
+                Camera eyeCam = eyeCamera.GetComponent<Camera>();
+                eyeCam.cullingMask = eyeCam.cullingMask & ~(1 << 8);
+            }
+        }
     }
 
     public void SwitchPanels(int id)
